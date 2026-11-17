@@ -62,3 +62,9 @@
 
 '@ | Add-Content -Encoding utf8 docs\\findings.md
 
+
+## Lesson 5: year-over-year report
+- Average YoY change (Oct 2019 - Aug 2020, full months only): -11.7%
+- Before COVID (Oct 2019 - Feb 2020): about -10.8%. During COVID (Mar - Aug 2020): about -12.4%.
+- Conclusion: decline is NOT mainly COVID; most of it already existed.
+- Partial months (Sep 2019 +106%, Sep 2020 -35%) are fake jumps and were removed.
