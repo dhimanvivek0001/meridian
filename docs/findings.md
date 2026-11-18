@@ -68,3 +68,10 @@
 - Before COVID (Oct 2019 - Feb 2020): about -10.8%. During COVID (Mar - Aug 2020): about -12.4%.
 - Conclusion: decline is NOT mainly COVID; most of it already existed.
 - Partial months (Sep 2019 +106%, Sep 2020 -35%) are fake jumps and were removed.
+
+## Lesson 6: sales drivers (items = customers x visits per customer x items per visit)
+- Definition: 1 visit = 1 customer shopping on 1 day.
+- Yearly average change: customers -4.7%, visits per customer -2.7%, items per visit -4.6%.
+- Before COVID: smaller baskets were the main problem (-6.2% avg, negative every month).
+- Lockdown (Mar-Apr 2020): far fewer customers (-13%) but bigger online baskets (+14% in April).
+- After reopening: small baskets returned (-9% to -15%). Shrinking baskets = the long-term problem.
