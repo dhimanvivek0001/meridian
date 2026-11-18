@@ -83,3 +83,13 @@
 - Grew: underwear +3.9%, nightwear +5.6%, Other (H&M Home etc.) +240% from a tiny base. At-home shopping.
 - Lesson: sort by items lost, not by %. Big % on a small group can matter less.
 - Next question: were tops and trousers already falling BEFORE COVID?
+
+## Lesson 8: was it COVID? (Oct-Feb before covid, Mar-Aug during, each vs same months a year earlier)
+- Whole shop: before covid -11.1%, during covid -12.8%. Sales were already falling before covid.
+- Upper body: -14.8% before, -17.4% during. Lower body: -15.8% before, -13.8% during.
+- Tops + trousers = 637k of the 691k items lost BEFORE covid (92%). This is a product problem, not COVID.
+- Shoes ~-25% in both periods. Swimwear -25% before covid (my no-holiday guess was wrong).
+- Dresses (full body): +13.3% before, -6.9% during. The only group COVID really hurt.
+- Underwear and nightwear grew in both periods, faster during covid.
+- Lesson: split the data to test guesses. Totals vs average of monthly % give slightly different numbers.
+- Next question: WHICH tops and trousers are failing?
