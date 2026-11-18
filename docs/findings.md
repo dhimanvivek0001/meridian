@@ -75,3 +75,11 @@
 - Before COVID: smaller baskets were the main problem (-6.2% avg, negative every month).
 - Lockdown (Mar-Apr 2020): far fewer customers (-13%) but bigger online baskets (+14% in April).
 - After reopening: small baskets returned (-9% to -15%). Shrinking baskets = the long-term problem.
+
+## Lesson 7: which products lost sales (Oct 2019-Aug 2020 vs Oct 2018-Aug 2019)
+- Total: 15.52M -> 13.64M items (-12%).
+- Upper body -991k (-16%) = 53% of the loss. Lower body -506k (-15%) = 27%. Tops + trousers = ~80% of the loss.
+- Swimwear -20% (likely no-holiday COVID summer). Shoes -25% but only -99k items.
+- Grew: underwear +3.9%, nightwear +5.6%, Other (H&M Home etc.) +240% from a tiny base. At-home shopping.
+- Lesson: sort by items lost, not by %. Big % on a small group can matter less.
+- Next question: were tops and trousers already falling BEFORE COVID?
