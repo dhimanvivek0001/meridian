@@ -93,3 +93,13 @@
 - Underwear and nightwear grew in both periods, faster during covid.
 - Lesson: split the data to test guesses. Totals vs average of monthly % give slightly different numbers.
 - Next question: WHICH tops and trousers are failing?
+
+## Lesson 9: which tops are failing? (before covid: Oct19-Feb20 vs Oct18-Feb19)
+- Tops lost 420,583 items. Check: totals match Lesson 8 (2,850,711 -> 2,430,128).
+- Sweater -135,631 (-14.0%), T-shirt -116,109 (-31.4%), Blouse -70,434 (-22.9%). Together 77% of the tops loss.
+- Average for tops is -14.8%. Sweaters fall at the average (big only because they are the biggest type).
+- T-shirts fall TWICE as fast (-31%) = the real outlier. Blouses also worse than average.
+- Growing: Top +5.1%, Bodysuit +44.6%, Blazer +8.1%, Coat +4.1%.
+- Guess (not tested yet): customers moving from basic T-shirts to fashion tops, or buying basics elsewhere.
+- Lesson: compare each part to the average to find the real outlier, not just the biggest number.
+- Next question: WHY are T-shirts failing? Fewer T-shirts in the range, or each T-shirt selling less?
