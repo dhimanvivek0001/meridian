@@ -113,3 +113,13 @@
 - Business: range cut is a buying decision we control. Restoring T-shirt range = quickest fix.
 - Caveat: designs with zero sales are invisible; no stock data to fully prove removal.
 - Lesson: len() counts rows, n_unique() counts different values. Split a total into parts that multiply.
+
+## Lesson 11: do customers come back? (cohort retention)
+- 1,362,281 customers bought at least once (9,699 signed up but never bought).
+- Data starts 20 Sep 2018, so Sep-Dec 2018 'new' customers are mostly old regulars (left-censoring). Used cohorts Mar-Dec 2019 only.
+- Apr 2020 jump in new customers (40,689) = lockdown first-time online buyers.
+- Only 12-20% of new customers buy again next month. Loyal core ~10-15%.
+- Column view makes late-2019 cohorts look worse, but the DIAGONAL shows every cohort dropped together in Aug 2019 = calendar effect, not worse customers.
+- Matches Lesson 6: from autumn 2019 all customers come back less often.
+- Lesson: read cohort grids by rows, columns AND diagonals. Always check the first months of any dataset.
+- Next: Lesson 12 State of Meridian one-pager (closes M1), then M2/M3 (segments, churn).
