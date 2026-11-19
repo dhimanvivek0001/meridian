@@ -103,3 +103,13 @@
 - Guess (not tested yet): customers moving from basic T-shirts to fashion tops, or buying basics elsewhere.
 - Lesson: compare each part to the average to find the real outlier, not just the biggest number.
 - Next question: WHY are T-shirts failing? Fewer T-shirts in the range, or each T-shirt selling less?
+
+## Lesson 10: why are T-shirts failing? (before covid, items = designs x items per design)
+- Items 369,475 -> 253,366 (-31.4%). Check matches Lesson 9.
+- Designs sold 3,751 -> 2,995 (-20.2%, 756 fewer designs).
+- Items per design 98.5 -> 84.6 (-14.1%), about the same as all tops (-14.8%).
+- So demand per T-shirt falls like everything else. The EXTRA drop comes from fewer designs on sale.
+- About 60% of the T-shirt drop = fewer designs, 40% = each design selling less.
+- Business: range cut is a buying decision we control. Restoring T-shirt range = quickest fix.
+- Caveat: designs with zero sales are invisible; no stock data to fully prove removal.
+- Lesson: len() counts rows, n_unique() counts different values. Split a total into parts that multiply.
