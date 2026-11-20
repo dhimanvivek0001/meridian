@@ -173,3 +173,8 @@
 - Riskiest 10% only: -583 (LOSES money: mostly low-value people already gone).
 - Only if profit > 0: 558,456 vouchers, +17,173 = 28% more profit with 426k fewer vouchers.
 - Lesson: pick a threshold by expected profit, not by risk or accuracy. Write assumptions down clearly.
+
+## Lesson 18: LightGBM vs logistic regression
+- LightGBM (300 trees, boosting): AUC 0.793, accuracy 75.3%. Logistic regression: AUC 0.792, 75.3%. No real gain.
+- With only 5 clues, both models hit the same limit. The limit is the clues, not the model.
+- Decision: keep the simpler model (easier to explain and run). Next: better clues (feature engineering).
