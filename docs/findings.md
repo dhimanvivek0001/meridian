@@ -178,3 +178,10 @@
 - LightGBM (300 trees, boosting): AUC 0.793, accuracy 75.3%. Logistic regression: AUC 0.792, 75.3%. No real gain.
 - With only 5 clues, both models hit the same limit. The limit is the clues, not the model.
 - Decision: keep the simpler model (easier to explain and run). Next: better clues (feature engineering).
+
+## Lesson 19: better clues (feature engineering)
+- Added 8 clues: visits_4w, visits_prev12w, avg_gap, overdue (days_since / usual gap), age, FN, club_active, news_regular.
+- AUC: logistic 0.792 -> 0.795, LightGBM 0.793 -> 0.796. Small real gain.
+- LightGBM importance: visits 84.6%, days_since 5.3%, online_share 2.5%, overdue 1.5%, rest under 1.2% each. New clues mostly repeat what visits already says.
+- Ceiling ~0.80: for 2-visits-a-year shoppers, buying in a given 8 weeks is partly random timing.
+- Decision: stop tuning. Future idea: a longer churn window (6 months) is likely more predictable.
