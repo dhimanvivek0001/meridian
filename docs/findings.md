@@ -123,3 +123,11 @@
 - Matches Lesson 6: from autumn 2019 all customers come back less often.
 - Lesson: read cohort grids by rows, columns AND diagonals. Always check the first months of any dataset.
 - Next: Lesson 12 State of Meridian one-pager (closes M1), then M2/M3 (segments, churn).
+
+## Lesson 12a: store vs online (before covid Oct-Feb, during covid Mar-Aug, vs a year earlier)
+- Checks: store + online = Lesson 8 totals for all 4 periods.
+- Online = ~69% of items. Store ~31%.
+- Before covid: store -9.1% (-175k), online -12.0% (-516k). Online = 75% of the pre-covid loss.
+- During covid: store -26.7% (lockdown), online -6.6%. Online did NOT grow even with stores closed.
+- Business: the bigger, future channel (online) was shrinking fastest. Fixing online is the priority.
+- Lesson: test the obvious guess ('stores are dying') - the data said the opposite.
