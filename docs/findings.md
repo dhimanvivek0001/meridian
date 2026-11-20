@@ -185,3 +185,10 @@
 - LightGBM importance: visits 84.6%, days_since 5.3%, online_share 2.5%, overdue 1.5%, rest under 1.2% each. New clues mostly repeat what visits already says.
 - Ceiling ~0.80: for 2-visits-a-year shoppers, buying in a given 8 weeks is partly random timing.
 - Decision: stop tuning. Future idea: a longer churn window (6 months) is likely more predictable.
+
+## Lesson 20: why is THIS customer at risk? (SHAP pushes) - closes M3
+- LightGBM pred_contrib=True splits one customer's risk into a push per clue (+ = towards leaving, - = towards staying).
+- Example: top-10% spender, risk 0.62, really churned. UP: age 61 (+0.19), online-only (+0.15). DOWN: 33 items (-0.18), bought 35 days ago (-0.12), reads fashion news (-0.12).
+- Story: online-only burst shopper, usual gap ~20 days, now 1.8x overdue with no visit in 4 weeks -> online win-back email.
+- Cautions: pushes explain the MODEL, not real-world causes. Ignore small pushes; use the top 2-3.
+- M3 summary: churn model AUC ~0.80, beats baseline, profit-based targeting +28% profit, reasons per customer.
