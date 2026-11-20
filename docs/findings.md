@@ -158,3 +158,11 @@
 - Top 20% of last year's spenders = ~59% of next year's money (from these customers).
 - Regression to the mean: top band fell 1.52 -> 1.04, bottom band rose 0.04 -> 0.07. Don't value customers on last year alone.
 - Lesson: test a prediction with a past year you can check (Year 1 -> Year 2). qcut = equal-size bands. (condition).mean() = share of True.
+
+## Lesson 16: first churn model (M3 starts)
+- Churn = bought in the 12 months before the cutoff, but nothing in the next 8 weeks. Definition is a choice (8 weeks is short for 2-visits-a-year shoppers).
+- Time split: train cutoff 2 Jun 2020 (988,844 customers, 63.5% churn), test cutoff 28 Jul 2020 (984,525, 67.3% churn). No peeking at the future.
+- Logistic regression: accuracy 75.3% vs lazy-guess baseline 67.3%. AUC 0.792.
+- Risk bands climb smoothly: safest 10% = 19.6% churn, riskiest 10% = 92.4%.
+- Weights: visits -0.90 (strongest, more visits = stays), days_since +0.34, online_share +0.17 (online shoppers churn more), spend tiny (overlaps with visits/items).
+- Trap: the riskiest band is mostly already gone and low value. Next: target by expected profit (risk x value), not risk alone.
