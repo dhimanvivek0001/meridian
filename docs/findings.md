@@ -150,3 +150,11 @@
   - One-timers: 49%, 177 days, 1 visit = 15%. Half of customers bought once and left.
 - Same story as hand-made RFM (small group = most money). K-means gives a tighter top group (11% vs 22%).
 - Lesson: always shrink + scale before K-means. Name clusters by reading their medians.
+
+## Lesson 15: simple CLV - does last year predict next year?
+- Year 1 = 20 Sep 2018 to 22 Sep 2019, Year 2 = 23 Sep 2019 to 22 Sep 2020. 1,007,813 Year-1 buyers cut into 5 equal bands.
+- Came back in Year 2: 36% (lowest band) up to 93% (highest band).
+- Next-year value: top band 1.04 vs bottom band 0.07 = about 15x.
+- Top 20% of last year's spenders = ~59% of next year's money (from these customers).
+- Regression to the mean: top band fell 1.52 -> 1.04, bottom band rose 0.04 -> 0.07. Don't value customers on last year alone.
+- Lesson: test a prediction with a past year you can check (Year 1 -> Year 2). qcut = equal-size bands. (condition).mean() = share of True.
