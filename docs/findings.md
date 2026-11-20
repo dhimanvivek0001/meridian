@@ -131,3 +131,12 @@
 - During covid: store -26.7% (lockdown), online -6.6%. Online did NOT grow even with stores closed.
 - Business: the bigger, future channel (online) was shrinking fastest. Fixing online is the priority.
 - Lesson: test the obvious guess ('stores are dying') - the data said the opposite.
+
+## Lesson 13: RFM segments (M2 starts) - customers active 23 Sep 2019 to 22 Sep 2020
+- 994,320 active customers. Median: last bought 86 days ago, 2 visits, spend 0.20.
+- Skew: mean > median for frequency (4.4 vs 2) and spend (0.42 vs 0.20). A few super-fans (225 visits) pull the average up. Use median for 'typical'.
+- Top customers are real super-fans (normal spend per visit, just very frequent). Kept.
+- Champions 22% of customers = 59% of spend. Champions + Loyal = 45% of customers = 81% of spend (80/20 rule).
+- At risk: 37,568 customers, spend each 0.37 (close to Loyal 0.41) and going quiet = best win-back target.
+- New: 83,589, but only ~1 in 6 return (Lesson 11) = need a second-purchase offer.
+- Lesson: scores need cut-offs, which create edges (0.20239 vs 0.19999). Next: let the computer find groups (K-means).
