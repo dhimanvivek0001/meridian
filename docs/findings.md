@@ -140,3 +140,13 @@
 - At risk: 37,568 customers, spend each 0.37 (close to Loyal 0.41) and going quiet = best win-back target.
 - New: 83,589, but only ~1 in 6 return (Lesson 11) = need a second-purchase offer.
 - Lesson: scores need cut-offs, which create edges (0.20239 vs 0.19999). Next: let the computer find groups (K-means).
+
+## Lesson 14: K-means (first ML model) - computer finds customer groups by itself
+- Prep: log1p to shrink giants (225 visits -> 5.4), then scale (value - mean) / std so days, visits, money count equally.
+- 4 groups found:
+  - VIPs: 11% of customers, last bought 15 days ago, 13 visits = 47% of money.
+  - Regulars: 25%, 65 days, 5 visits = 30% of money.
+  - Recent light shoppers: 15%, 16 days, 3 visits, low spend = 8%. Best group to grow.
+  - One-timers: 49%, 177 days, 1 visit = 15%. Half of customers bought once and left.
+- Same story as hand-made RFM (small group = most money). K-means gives a tighter top group (11% vs 22%).
+- Lesson: always shrink + scale before K-means. Name clusters by reading their medians.
