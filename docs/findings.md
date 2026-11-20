@@ -166,3 +166,10 @@
 - Risk bands climb smoothly: safest 10% = 19.6% churn, riskiest 10% = 92.4%.
 - Weights: visits -0.90 (strongest, more visits = stays), days_since +0.34, online_share +0.17 (online shoppers churn more), spend tiny (overlaps with visits/items).
 - Trap: the riskiest band is mostly already gone and low value. Next: target by expected profit (risk x value), not risk alone.
+
+## Lesson 17: who is worth saving? (expected profit targeting)
+- Expected profit = risk x save rate x value - cost. Assumed save rate 20%, voucher cost 0.02 (to be tested in M4).
+- Contact everyone: 984,525 vouchers, +13,375.
+- Riskiest 10% only: -583 (LOSES money: mostly low-value people already gone).
+- Only if profit > 0: 558,456 vouchers, +17,173 = 28% more profit with 426k fewer vouchers.
+- Lesson: pick a threshold by expected profit, not by risk or accuracy. Write assumptions down clearly.
