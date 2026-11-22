@@ -224,3 +224,9 @@
 - Simulation check: 1,000 fake tests at 5,801 per group caught a real 5% effect 78.9% of the time (target 80%).
 - Our test (27k per group) was far bigger than needed for a 20% effect; minimum detectable save rate ~2.3%. A big control group means lost saves.
 - A 1% effect needs ~290k people: more than the whole emailable audience -> can't test reliably.
+
+## Lesson 27: A/B traps - peeking and sample ratio mismatch
+- 2,000 simulated A/A tests (no real effect), 28 days, 500/day/group: looking once at the end fooled 4.9% (expected ~5%); peeking daily and stopping at first p<0.05 fooled 27.6% (5.6x more fake wins).
+- Fix: fix sample size up front, look once (or use sequential testing with stricter early thresholds).
+- SRM check: our split 27,244 vs 26,918 -> p = 0.16, OK. Broken example 27,244 vs 25,800 -> p < 0.0001, SRM.
+- Rule: check the split (SRM p < 0.001 = investigate) BEFORE reading any results.
