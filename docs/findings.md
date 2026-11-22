@@ -192,3 +192,12 @@
 - Story: online-only burst shopper, usual gap ~20 days, now 1.8x overdue with no visit in 4 weeks -> online win-back email.
 - Cautions: pushes explain the MODEL, not real-world causes. Ignore small pushes; use the top 2-3.
 - M3 summary: churn model AUC ~0.80, beats baseline, profit-based targeting +28% profit, reasons per customer.
+
+## Lesson 21: Databricks lakehouse (M0 part 2)
+- Uploaded raw parquet to Unity Catalog volume workspace.meridian.raw (transactions split into 25 monthly files: 470 MB failed as one upload).
+- Bronze: bronze_articles 105,542 / bronze_customers 1,371,980 / bronze_transactions 31,788,324 (match laptop).
+- Silver (Spark): silver_customers, silver_transactions - same rules as Lessons 3-4. Online 22.4M / store 9.4M.
+- Gold (SQL): gold_customer_rfm - segment counts match Lesson 13 exactly. Plus clusters, churn scores, voucher list.
+- gold_customer_360: one row per customer (1,371,980) with segment, cluster, churn risk, voucher flag. Clusters and churn risk agree (VIPs 0.24 -> One-timers 0.79).
+- Job meridian_weekly: bronze -> silver -> gold with dependencies, scheduled Monday 06:00. First run succeeded in 2m 4s.
+- Noticed: 92% of VIPs get a voucher but most would stay anyway -> uplift problem for M4/M5.
