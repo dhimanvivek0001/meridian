@@ -336,3 +336,11 @@
 - Trained on 1 week only, the ranker LOST (10.93%): too little data. A plain classifier on 2 weeks scored 11.65% in a side test.
 - Top features: days since customer bought the item (20%), days since last visit (12%), age gap customer vs item buyers (11%), pair count (9%).
 - Honest verdict: the margin over the simple rule is about 60 buyers out of 69k, which may be noise. Big gains need better candidates (recall 24%), not cleverer ordering.
+
+## Lesson 46 - Product photos to CLIP embeddings (M9 starts)
+- Picked the top 3,000 sellers of 19 Aug - 15 Sep 2020 (pre-cut, no test peeking); they cover 69% of those 4 weeks' purchase lines.
+- SUBSET: Kaggle rate limits (HTTP 429) stopped the download at 1,935 images (469 MB, avg 248 KB; 5 have no image). Downloaded in sales order, so it is roughly the top ~1,940 sellers.
+- CLIP ViT-B/32 (OpenAI weights, "-quickgelu" config to match training) on CPU: each photo -> 512 numbers, about 3.5 minutes for 1,935 photos.
+- Sanity check: nearest photo has the same product type 73.8% of the time (random pair 6.9%) and same colour 59.2% (random 17.5%).
+- Text search works without training: "black jeans" -> skinny denim trousers and jeggings; "striped sweater" -> sweaters.
+- Gotcha: plain "ViT-B-32" + OpenAI weights gives a QuickGELU mismatch warning (slightly wrong embeddings; 72.5% same-type vs 73.8%).
