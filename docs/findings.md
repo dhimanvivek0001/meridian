@@ -326,3 +326,13 @@
 - Hit rate: popular 6.43% | buy-again + popular 10.65% | pairs + popular 8.62% | buy-again + pairs + popular 11.37% (+0.72 pts, +6.8% vs L43).
 - Only the 31,095 test buyers with recent history (45%) can gain: 15.75% -> 17.35%. The other 37,889 still get bestsellers only.
 - Every source helps a bit; the next step is a ranker that scores all candidates rather than fixed slot order (L45).
+
+## Lesson 45 - Candidates + LightGBM ranker (closes M8)
+- Candidates per buyer: own items (4 wks) + top-5 basket partners + top-50 bestsellers = ~60 per buyer (4.1M test rows).
+- Candidate recall = 23.96% on test: no ordering of these candidates can beat that hit rate (the real ceiling).
+- Ranker (lambdarank, 16 features) trained on 2 weeks (2-8 Sep, 9-15 Sep; 33,603 buyers with a positive, 2.24M rows).
+- Hit rate: L44 11.37% | hand rule on the same wider pool 11.43% | ranker 11.52% (+0.15 pts vs L44, +0.09 vs rule).
+- With history (31,095): rule 17.48% -> ranker 18.06%. Without history (37,889): rule 6.46% -> ranker 6.16% (worse: reorders bestsellers badly).
+- Trained on 1 week only, the ranker LOST (10.93%): too little data. A plain classifier on 2 weeks scored 11.65% in a side test.
+- Top features: days since customer bought the item (20%), days since last visit (12%), age gap customer vs item buyers (11%), pair count (9%).
+- Honest verdict: the margin over the simple rule is about 60 buyers out of 69k, which may be noise. Big gains need better candidates (recall 24%), not cleverer ordering.
