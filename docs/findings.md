@@ -307,3 +307,8 @@
 - Profit on 80 test group-weeks: perfect 1,096,230 | last year 926,044 (84%) | newsvendor 923,011 (84%) | order the 90th-pct high case 318,018 (29%).
 - "Never run out" destroys profit (this is how Lesson 37 overstock happens).
 - Price of uncertainty = 16% of profit (about 173k per 8 weeks) -> the business case for better forecasts.
+
+## Lesson 42 - Recommender baseline (M8 starts)
+- Time machine: history up to 15 Sep 2020; test week 16-22 Sep 2020 = 68,984 buyers (only 5% of customers shop in a given week).
+- Popularity baseline: everyone gets the 12 bestsellers of 9-15 Sep -> hit rate 6.43% (1 in 16 buyers bought at least one).
+- Strong cheap baseline (why homepages show bestsellers), but identical for every customer. Bar to beat: 6.43%.
