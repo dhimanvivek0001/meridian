@@ -230,3 +230,12 @@
 - Fix: fix sample size up front, look once (or use sequential testing with stricter early thresholds).
 - SRM check: our split 27,244 vs 26,918 -> p = 0.16, OK. Broken example 27,244 vs 25,800 -> p < 0.0001, SRM.
 - Rule: check the split (SRM p < 0.001 = investigate) BEFORE reading any results.
+
+## Lesson 29: uplift modelling (M5 part 1) - who does the voucher actually change?
+- 4 types: sure things, persuadables, lost causes, sleeping dogs. Only persuadables are worth a voucher.
+- Simulated experiment with planted truth: online light shoppers (online_share >= 0.5, visits <= 4) save 35%, others 5%. Observed: 34% vs 6%.
+- T-learner: LightGBM on control + LightGBM on voucher group; uplift = p(churn without) - p(churn with). Random 50/50 train/test split.
+- Ranked by uplift: top 20% real effect 22.5 pts, 96% persuadables; bottom 40% ~3-5 pts.
+- Ranked by churn risk: blurrier (18.5 -> 3.3 pts); low-risk band has persuadables but nothing to save.
+- Top 40% targeting: uplift 21.2 pts vs risk 17.7 pts = ~20% more customers saved per voucher.
+- Uplift models need randomised experiment data (M4 first). Small bands are noisy (+-1-2 pts).
