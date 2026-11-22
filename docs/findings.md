@@ -247,3 +247,11 @@
 - Identifiability: v1 email only on Mondays (collinear with Monday effect) and social nearly constant -> estimates 48 and 1,517 (nonsense).
 - v2 varied spend (social high/low days, email random days): social 171 (+8%), email 308, TV 76, search 338. Ranking of all 4 channels correct.
 - Lessons: control for demand, spend must vary to be measurable, calibrate remaining bias with lift tests (experiments) / Bayesian priors.
+
+## Lesson 33 - MMM budget plan (closes M5)
+- Same budget (EUR 47,962/day) re-split with the fitted MMM, each channel kept within 50-200% of today.
+- Plan: TV -11,701, social -458, search +10,892, email +1,267 (search and email hit the 200% cap = red flag).
+- Model promised +3,097 items/day; truth was only +119/day (+43,488/year), about 26x over-promised.
+- Why: the model overrated search (338 vs true 225) and email (308 vs 190), and the optimizer exploits model errors ("optimizer's curse").
+- Direction was right (TV -1,020 items, search +927, email +261), but the size was wrong.
+- Recommendation: shift about 20% of the plan, run a geo lift test on search, calibrate the MMM, then move more (test-and-learn).
