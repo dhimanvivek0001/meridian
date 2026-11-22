@@ -282,3 +282,10 @@
 - 9,320 items: 1,045 need 0%, 3,334 get 5-35%, 4,941 overstocked hit the 40% floor.
 - Money: no discount 1,657,559 | flat 50% off 1,387,018 (-16.3%) | smart per-item 1,684,921 (+1.7%).
 - Lesson: blanket sales destroy value; per-item markdowns beat flat by +21%. Gain vs no discount is small because elasticity is near -1.
+
+## Lesson 38 - Forecast baselines (M7 starts)
+- 104 full weeks (Sep 2018 - Sep 2020); last 8 weeks hidden as the test.
+- WAPE: seasonal (same weeks last year) 8.4% | naive (last week) 10.0% | avg of last 4 weeks 13.0%.
+- Fashion is seasonal; the 4-week average was inflated by the July summer sale.
+- Bug caught: u32 columns wrap around on subtraction (782,410% WAPE) - always cast to float.
+- Bar to beat for the ML forecaster: 8.4%.
