@@ -275,3 +275,10 @@
 - Revenue trap: 40% off = revenue +10% but profit -63% (cost = 50% of full price). Best in-season profit = no discount.
 - Break-even: at 50% cost, 10% off only pays if sales rise 25%+ (elasticity about -2.1); ours is -1.2.
 - Discounts make sense only when leftover stock would otherwise be wasted (clearance) - next lesson.
+
+## Lesson 37 - Clearance markdowns (closes M6)
+- 6 weeks left, elasticity -1.2, outlet pays 10% of full price; cost already spent so it doesn't matter.
+- Rule: discount just enough to sell out on the last day; never deeper than 40% (below that, the outlet pays more than extra store sales).
+- 9,320 items: 1,045 need 0%, 3,334 get 5-35%, 4,941 overstocked hit the 40% floor.
+- Money: no discount 1,657,559 | flat 50% off 1,387,018 (-16.3%) | smart per-item 1,684,921 (+1.7%).
+- Lesson: blanket sales destroy value; per-item markdowns beat flat by +21%. Gain vs no discount is small because elasticity is near -1.
