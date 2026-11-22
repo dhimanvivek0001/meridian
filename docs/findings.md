@@ -295,3 +295,9 @@
 - Per group WAPE: seasonal 17.2% vs ML 16.9%. Company total: seasonal 8.4% vs ML 8.6% -> effectively a tie.
 - ML is not magic: short history + COVID-distorted training year + 8-week gap = simple seasonal is hard to beat. Always show the baseline.
 - Errors cancel when added up: 17% per group vs 8.4% total, so item/size-level stock decisions face much bigger uncertainty.
+
+## Lesson 40 - Forecast ranges
+- Goal: low (10th pct) / high (90th pct) so reality lands inside about 80% of the time.
+- Quantile LightGBM: only 44% inside (width 42% of sales) = overconfident; also quantile crossing (low > mid for Shoes, 3 Aug).
+- Past-miss range (seasonal x 10th/90th pct of past actual/last-year ratios = 0.59x to 1.87x): 88% inside, width 123%.
+- Honest wide ranges beat narrow wrong ones; the width reflects real COVID-era volatility and should drive stock strategy.
