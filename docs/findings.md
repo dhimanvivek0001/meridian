@@ -201,3 +201,12 @@
 - gold_customer_360: one row per customer (1,371,980) with segment, cluster, churn risk, voucher flag. Clusters and churn risk agree (VIPs 0.24 -> One-timers 0.79).
 - Job meridian_weekly: bronze -> silver -> gold with dependencies, scheduled Monday 06:00. First run succeeded in 2m 4s.
 - Noticed: 92% of VIPs get a voucher but most would stay anyway -> uplift problem for M4/M5.
+
+## Lessons 22-23: M3.5 Activation (audiences + reverse ETL)
+- gold_audiences: one audience per customer by priority rule: winback_voucher 146,370 / vip_early_access 105,788 / second_purchase 83,585 / reactivation_email 215,931.
+- Consent (FN opt-in) cuts reachable customers from 551,674 to 198,161 (36%). VIPs opt in most (49%). Growing opt-in may beat model improvements.
+- Exported one CSV per audience (consent only) from Databricks volume workspace.meridian.exports.
+- File-name mix-up caught by checking the audience column inside each file. Push script reads audience from INSIDE the file.
+- Mock ad platform (FastAPI): 10,000 IDs per request limit. push_audiences.py sent all 4 audiences in 22 batches, totals match exactly.
+- Idempotent: re-running the push keeps the same totals (no duplicates).
+- Real-world note: Meta/Google match on hashed email/phone from the CRM; our data only has anonymous IDs.
