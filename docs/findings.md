@@ -262,3 +262,9 @@
 - Within-item lift: 5-15% off = 1.15x the item's own normal (first sign of elasticity); deep discounts still 0.84-0.90.
 - Remaining trap = lifecycle: deep markdowns happen when an item is old and demand is dying anyway.
 - Next: regression with item + week + item age to get clean elasticity per product group.
+
+## Lesson 35 - Elasticity regression and markdown event study
+- Regression (item + week normals removed, item age clue): elasticity +0.14 = WRONG sign; age effect -0.24 (older sells less, sensible).
+- Why: reactive pricing - H&M marks down BECAUSE sales fall. Event study: lift 1.18 -> 1.05 -> 1.03 -> 0.92 in the 4 weeks before the first markdown.
+- Markdown works: lift 0.92 -> 1.41 (+53%) in the markdown week, fading to 1.09 by week +4.
+- Still not clean (markdowns overlap the Jan/Jul sale season); the only clean answer is a randomised price test.
