@@ -344,3 +344,12 @@
 - Sanity check: nearest photo has the same product type 73.8% of the time (random pair 6.9%) and same colour 59.2% (random 17.5%).
 - Text search works without training: "black jeans" -> skinny denim trousers and jeggings; "striped sweater" -> sweaters.
 - Gotcha: plain "ViT-B-32" + OpenAI weights gives a QuickGELU mismatch warning (slightly wrong embeddings; 72.5% same-type vs 73.8%).
+
+## Lesson 47 - Visually similar items as a candidate source (closes M9)
+- New source: for each of a customer's own recent items that has a photo (1,935-photo subset from L46), add its 5 most similar photos.
+- Test recall (ceiling): L45 sources 23.96% -> + visual 24.55% (YES, above 23.96%), +5.2 candidates per buyer.
+- Fair control: adding 5 more bestsellers instead (same extra rows) reaches 24.75% -> beats the visual source.
+- Visual-only candidates get bought 0.23% of the time vs 0.55% for L45 candidates (about 2.4x weaker).
+- Buyers with history: recall 32.52% -> 33.81%. Buyers without history: unchanged (no own items to look like).
+- Ranker re-trained with vis_sim / vis_links / is_vis: hit rate 11.52% -> 11.43% (-0.09 pts). Visual features not in the top 8 by gain.
+- Verdict: "looks like what you bought" is a real but weak signal for next-week purchases (shoppers rarely buy a near-twin of what they just bought). Keep embeddings for search/cold-start (new items with no sales), not for this ranker.
