@@ -255,3 +255,10 @@
 - Why: the model overrated search (338 vs true 225) and email (308 vs 190), and the optimizer exploits model errors ("optimizer's curse").
 - Direction was right (TV -1,020 items, search +927, email +261), but the size was wrong.
 - Recommendation: shift about 20% of the plan, run a geo lift test on search, calibrate the MMM, then move more (test-and-learn).
+
+## Lesson 34 - Price vs units (M6 starts)
+- 2,210,899 item-weeks; discount = 1 - week price / item's highest price.
+- Raw view: 0-5% off sells 17.8/week but 50%+ off only 8.3 - looks like discounts HURT (confounding: H&M discounts the items that are already failing).
+- Within-item lift: 5-15% off = 1.15x the item's own normal (first sign of elasticity); deep discounts still 0.84-0.90.
+- Remaining trap = lifecycle: deep markdowns happen when an item is old and demand is dying anyway.
+- Next: regression with item + week + item age to get clean elasticity per product group.
