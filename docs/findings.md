@@ -312,3 +312,9 @@
 - Time machine: history up to 15 Sep 2020; test week 16-22 Sep 2020 = 68,984 buyers (only 5% of customers shop in a given week).
 - Popularity baseline: everyone gets the 12 bestsellers of 9-15 Sep -> hit rate 6.43% (1 in 16 buyers bought at least one).
 - Strong cheap baseline (why homepages show bestsellers), but identical for every customer. Bar to beat: 6.43%.
+
+## Lesson 43 - Buy-again recommender
+- Candidates = each customer's own items from the last 4 weeks (most-bought, then most recent), bestsellers fill remaining slots.
+- 235,277 customers had a purchase in the 4 weeks before the cut.
+- Hit rate: popular only 6.43% | buy-again only 5.48% | buy-again + popular 10.65% (+66% vs baseline).
+- Different sources catch different customers; real recommenders combine candidate sources.
