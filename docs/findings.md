@@ -239,3 +239,11 @@
 - Ranked by churn risk: blurrier (18.5 -> 3.3 pts); low-risk band has persuadables but nothing to save.
 - Top 40% targeting: uplift 21.2 pts vs risk 17.7 pts = ~20% more customers saved per voucher.
 - Uplift models need randomised experiment data (M4 first). Small bands are noisy (+-1-2 pts).
+
+## Lessons 30-32: marketing mix modelling (M5 part 2, simulated spend with planted truth)
+- Simulated 4 channels on real daily sales: TV bursts, social, search (follows demand), email. Planted adstock + saturation. Truth (items per EUR 1k): search 225 > email 190 > social 158 > TV 89.
+- Fit: adstock + saturation per channel, settings searched with scipy minimize, regression with trend/weekday/month controls.
+- Confounding: naive MMM credited search with ~3,650 (16x truth). Adding a demand control (search-trends index) -> ~338.
+- Identifiability: v1 email only on Mondays (collinear with Monday effect) and social nearly constant -> estimates 48 and 1,517 (nonsense).
+- v2 varied spend (social high/low days, email random days): social 171 (+8%), email 308, TV 76, search 338. Ranking of all 4 channels correct.
+- Lessons: control for demand, spend must vary to be measurable, calibrate remaining bias with lift tests (experiments) / Bayesian priors.
