@@ -289,3 +289,9 @@
 - Fashion is seasonal; the 4-week average was inflated by the July summer sale.
 - Bug caught: u32 columns wrap around on subtraction (782,410% WAPE) - always cast to float.
 - Bar to beat for the ML forecaster: 8.4%.
+
+## Lesson 39 - ML forecaster vs seasonal baseline
+- Global LightGBM over 10 product groups (50k+ units), clues = lags 8-11, 52, 53 + week of year + group; only 430 training rows.
+- Per group WAPE: seasonal 17.2% vs ML 16.9%. Company total: seasonal 8.4% vs ML 8.6% -> effectively a tie.
+- ML is not magic: short history + COVID-distorted training year + 8-week gap = simple seasonal is hard to beat. Always show the baseline.
+- Errors cancel when added up: 17% per group vs 8.4% total, so item/size-level stock decisions face much bigger uncertainty.
