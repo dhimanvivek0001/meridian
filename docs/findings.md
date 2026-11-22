@@ -210,3 +210,10 @@
 - Mock ad platform (FastAPI): 10,000 IDs per request limit. push_audiences.py sent all 4 audiences in 22 batches, totals match exactly.
 - Idempotent: re-running the push keeps the same totals (no duplicates).
 - Real-world note: Meta/Google match on hashed email/phone from the CRM; our data only has anonymous IDs.
+
+## Lessons 24-25: M4 A/B test of the winback voucher (simulated, planted truth 20%)
+- Coin-flip split of the emailable winback audience: control 27,244 / voucher 26,918.
+- Churn: control 52.05% vs voucher 41.99%. Gap 10.05 pts, 95% CI [9.22, 10.89], p < 0.0001.
+- Save rate recovered: 17.7% to 20.9% (planted truth 20% inside the range). Confirms the Lesson 17 assumption.
+- A/A check (two halves of control): gap -0.59, CI [-1.77, 0.60], p = 0.33. No fake effect, setup is fair.
+- Lessons: randomisation removes selection bias; always report effect + CI + p-value; run an A/A sanity check.
