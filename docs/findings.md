@@ -318,3 +318,11 @@
 - 235,277 customers had a purchase in the 4 weeks before the cut.
 - Hit rate: popular only 6.43% | buy-again only 5.48% | buy-again + popular 10.65% (+66% vs baseline).
 - Different sources catch different customers; real recommenders combine candidate sources.
+
+## Lesson 44 - "Bought together" recommender
+- Baskets = one customer on one day, 19 Aug - 15 Sep 2020: 338,026 baskets, 963,309 lines, 2,970,330 distinct item pairs.
+- Kept each item's top-3 partners seen together 2+ times -> 13,363 items have partners. Example: #1 bestseller FF PI Haley dress -> Mary dress (62 baskets), Cilla dress (43), Hannah dress (33).
+- Slots: own recent items -> their partners -> bestsellers to 12.
+- Hit rate: popular 6.43% | buy-again + popular 10.65% | pairs + popular 8.62% | buy-again + pairs + popular 11.37% (+0.72 pts, +6.8% vs L43).
+- Only the 31,095 test buyers with recent history (45%) can gain: 15.75% -> 17.35%. The other 37,889 still get bestsellers only.
+- Every source helps a bit; the next step is a ranker that scores all candidates rather than fixed slot order (L45).
