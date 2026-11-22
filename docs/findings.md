@@ -268,3 +268,10 @@
 - Why: reactive pricing - H&M marks down BECAUSE sales fall. Event study: lift 1.18 -> 1.05 -> 1.03 -> 0.92 in the 4 weeks before the first markdown.
 - Markdown works: lift 0.92 -> 1.41 (+53%) in the markdown week, fading to 1.09 by week +4.
 - Still not clean (markdowns overlap the Jan/Jul sale season); the only clean answer is a randomised price test.
+
+## Lesson 36 - Randomised price test
+- 9,320 items (5+ sales/week in Aug 2020) randomly given 0/10/20/30/40% off; planted elasticity -1.2.
+- Test recovered the truth: lifts 1.00 / 1.14 / 1.31 / 1.53 / 1.83 (randomisation removes reactive-pricing bias; regression had said +0.14).
+- Revenue trap: 40% off = revenue +10% but profit -63% (cost = 50% of full price). Best in-season profit = no discount.
+- Break-even: at 50% cost, 10% off only pays if sales rise 25%+ (elasticity about -2.1); ours is -1.2.
+- Discounts make sense only when leftover stock would otherwise be wasted (clearance) - next lesson.
