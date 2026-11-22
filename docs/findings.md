@@ -301,3 +301,9 @@
 - Quantile LightGBM: only 44% inside (width 42% of sales) = overconfident; also quantile crossing (low > mid for Shoes, 3 Aug).
 - Past-miss range (seasonal x 10th/90th pct of past actual/last-year ratios = 0.59x to 1.87x): 88% inside, width 123%.
 - Honest wide ranges beat narrow wrong ones; the width reflects real COVID-era volatility and should drive stock strategy.
+
+## Lesson 41 - How much to order (closes M7)
+- Newsvendor: running short costs 0.50 (lost margin), a leftover costs 0.40 (cost 0.50 - outlet 0.10) -> order at the 56% level of past misses (about 1.0x last year).
+- Profit on 80 test group-weeks: perfect 1,096,230 | last year 926,044 (84%) | newsvendor 923,011 (84%) | order the 90th-pct high case 318,018 (29%).
+- "Never run out" destroys profit (this is how Lesson 37 overstock happens).
+- Price of uncertainty = 16% of profit (about 173k per 8 weeks) -> the business case for better forecasts.
