@@ -217,3 +217,10 @@
 - Save rate recovered: 17.7% to 20.9% (planted truth 20% inside the range). Confirms the Lesson 17 assumption.
 - A/A check (two halves of control): gap -0.59, CI [-1.77, 0.60], p = 0.33. No fake effect, setup is fair.
 - Lessons: randomisation removes selection bias; always report effect + CI + p-value; run an A/A sanity check.
+
+## Lesson 26: power and sample size
+- 5% false-alarm rate, 80% power, base churn 52%. Customers per group: 20% save -> 358, 10% -> 1,448, 5% -> 5,801, 2% -> 36,248, 1% -> 144,955.
+- Halving the detectable effect needs 4x the sample (gap squared in the formula).
+- Simulation check: 1,000 fake tests at 5,801 per group caught a real 5% effect 78.9% of the time (target 80%).
+- Our test (27k per group) was far bigger than needed for a 20% effect; minimum detectable save rate ~2.3%. A big control group means lost saves.
+- A 1% effect needs ~290k people: more than the whole emailable audience -> can't test reliably.
