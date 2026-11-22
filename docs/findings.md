@@ -353,3 +353,13 @@
 - Buyers with history: recall 32.52% -> 33.81%. Buyers without history: unchanged (no own items to look like).
 - Ranker re-trained with vis_sim / vis_links / is_vis: hit rate 11.52% -> 11.43% (-0.09 pts). Visual features not in the top 8 by gain.
 - Verdict: "looks like what you bought" is a real but weak signal for next-week purchases (shoppers rarely buy a near-twin of what they just bought). Keep embeddings for search/cold-start (new items with no sales), not for this ranker.
+
+## Lesson 48 - Text similarity on detail_desc (M10 starts)
+- 105,126 articles have a description (416 missing); median 22 words. Colour variants share the IDENTICAL description (100% of 23,061 multi-colour products), so the benchmark keeps one article per product: 10,000 random products.
+- Nearest neighbour same type / colour / department: chance 4.5% / 11.8% / 1.1% | TF-IDF 72.2% / 24.8% / 36.3% | MiniLM 80.1% / 24.5% / 37.4%.
+- MiniLM (all-MiniLM-L6-v2, 90 MB, free, CPU) beats TF-IDF on type by 8 pts: it matches meaning ("vest top" ~ "T-shirt"), not just shared words.
+- CLIP text encoder dropped: one run gave 80.5% type (tie with MiniLM) but took ~15 min vs ~2 min. Not a thread bug: 40 s per 500 texts even alone; it pads every text to 77 tokens and is ~3x bigger.
+- Text vs photo on the 1,935 photo items (other colours of the same product excluded): type photo 70.5% / text 78.4% / both 81.6%; colour photo 61.0% / text 31.4% / both 46.9%.
+- Text knows WHAT it is, photos know what COLOUR it is; combining wins on type and department.
+- Correction to L46: excluding same-product colour variants lowers the photo same-type score from 73.8% to 70.5%.
+- Memory/speed fix: nearest neighbours computed 1,000 rows at a time instead of full 10k x 10k matrices.
