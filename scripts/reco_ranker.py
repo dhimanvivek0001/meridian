@@ -36,8 +36,11 @@ def build(cut):
             pl.len().alias("pop_4w"),
             pl.col("age").mean().alias("item_age"),
         )
+        # Rank in a FIXED order (sales, then article id). rank("ordinal") broke ties by row position, and group_by row
+        # order changes between runs, so pop_rank (a model feature) changed too: found by MLflow tracking in Lesson 54
+        .sort(["pop_1w", "article_id"], descending=[True, False])
         .with_columns(
-            pl.col("pop_1w").rank("ordinal", descending=True).alias("pop_rank"),
+            pl.int_range(1, pl.len() + 1).alias("pop_rank"),
             ((pl.col("pop_1w") + 1) / (pl.col("pop_prev_1w") + 1)).alias("trend"),
         )
     )

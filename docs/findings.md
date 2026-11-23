@@ -413,3 +413,12 @@
 - Hand check of 12 random flags each, against a rubric set before reading them: price LOW 7/9 worth review, price HIGH 0/3 (customer paid the article's normal full price while others got a markdown) | bulk 5/12 (cheap basics like tees/tanks/scrunchies are stocking up) | huge baskets 7/12 | Isolation Forest 8/12.
 - Overall precision 27/48 = 56%. Fixes: drop the high-price rule; exclude cheap basics from the bulk rule; investigate the 80%-off pattern first (largest, most consistent).
 - Caveat: no size or returns data. 10 identical units might partly be several sizes (bracketing, returned later); the labels are my judgement, not confirmed fraud.
+
+## Lesson 54 - MLflow experiment tracking (M12 starts)
+- MLflow 3.18 (free, local). Tracking database + model files in data/mlflow/ (gitignored). Each run logs params, metrics, the model file, feature importance, git commit (+ "-dirty" if code is uncommitted), an md5 fingerprint of the training data, and a batch id.
+- Churn experiment (6 runs, test AUC): L16 logistic v1 0.7916 | L18 LightGBM v1 0.7932 | L19 logistic v2 0.7949 | L19 LightGBM v2 0.7964 | L54 LightGBM 600 small trees (15 leaves) 0.7965 | L54 LightGBM big trees (127 leaves, lr 0.1) 0.7956. Riskiest 10%: 92.4% -> 93.9% churn. Tuning gains are in the 4th decimal: the clues set the limit (as in L18).
+- Ranker experiment: L45 ranker 11.54% hit@12 | 100 trees 11.46% | 63 leaves 11.53% | hand rule 11.42%.
+- REPRODUCIBILITY BUG FOUND BY TRACKING: the same L45 code, data and seed gave 7,968 and 7,938 hits in two runs (L45 published 11.52%). Cause: pop_rank used rank("ordinal"), which breaks ties by row order, and polars group_by row order changes between runs. Fixed (rank by sales, then article_id): two runs after the fix both gave exactly 7,962 (11.54%); hand rule 11.43% -> 11.42%.
+- The 30-buyer run-to-run spread (0.04 pts) is about a third of the ranker's whole gain over the hand rule (0.12 pts), which confirms L45's caveat that the gain may be noise.
+- MLflow gotcha: MLflow 3 refuses to save an LGBMRanker via skops ("untrusted type"); logged the native LightGBM booster (plain-text model file) instead. Explicit pip_requirements stop MLflow guessing (it picked up torch).
+- UI: .venv\Scripts\mlflow ui --backend-store-uri sqlite:///data/mlflow/mlflow.db -> http://127.0.0.1:5000 (verified: 3 Meridian experiments served).
