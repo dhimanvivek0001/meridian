@@ -373,3 +373,13 @@
 - PHOTO SUBSET: Kaggle 429s stopped the new-item download at 214 of 667 photos (32%, the lowest article IDs: older product lines, median 2 units vs 3). Owned photos only from the L46 top-seller subset (86.9% of customers have one).
 - All 667 items: photo 3.42% (it can only pick from the 214 photographed). Like-for-like on the 214 (451 customers): random 7.76% | your types 13.53% | photo 21.06% | text 23.06% | text + photo 23.73%.
 - Verdict: yes, content embeddings pick new items ~3x better than random and beat category rules; text > photo; combining adds a little. 929 of 4,249 new-item purchases were new colours of products someone owned.
+
+## Lesson 50 - GenAI: product tags + one-line summaries with a FREE local model (closes M10)
+- Model: SmolLM2-360M-Instruct (Hugging Face, Apache-2.0, 727 MB download, CPU, no API, no cost). Qwen2.5-0.5B was 1.0 GB (at the download limit), so not used.
+- Sample: 100 of the 570 new test-week products that have a description (one colour per product, seed 50). Greedy decoding = same text every run.
+- First try (one prompt asking for "Tags: ... Summary: ...") gave 0% usable output: the small model echoed the instructions or wrote a plain sentence. Fix: one task per prompt + one worked example (few-shot) + short max length. Also no_repeat_ngram_size=3 to stop loops ("V-neck, V-neck, V-neck").
+- Instruction following: 100% gave 3+ tags but only 12% gave exactly 5 (median 8; we keep the first 5). Summaries median 18 words; only 38% kept to the 15-word limit.
+- Speed: 9.8 s per item on CPU for both tasks -> ~12 days for all 105k articles on this laptop (a GPU or batching would be needed).
+- Grounding (share of words found in description/colour/type): TF-IDF keywords 100% (by construction) | LLM tags 88.4% | LLM summaries 68.2%. Made-up details seen: "shoulder-pockets", "summer look", "velvet" for velour, typos "tulley", "ribbied", "long-slept".
+- Type guessed from text by MiniLM (rough usefulness test): full description 50.0% | TF-IDF top-5 20.0% | LLM tags 22.0% | LLM summary 57.0%. Colour mentioned 97%. CAVEAT: type and colour were given in the prompt, so the summary and colour scores partly reflect copying.
+- Verdict: a free 360M local model writes readable tags and copy, but invents ~1 in 9 tag words and ~1 in 3 summary words. Usable as drafts with human review or a grounding filter, not unsupervised. For pure search tags, plain TF-IDF keywords are as useful and never invent.
