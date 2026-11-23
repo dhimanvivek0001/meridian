@@ -137,11 +137,16 @@ digest = hashlib.md5(aud.select("customer_id", pl.col("risk").round(6), "audienc
 print(f"  written to {OUT}/ (output fingerprint {digest})")
 
 # ---------------- 6. Log the pipeline run itself ----------------
-mlflow.set_experiment("meridian-weekly-pipeline")
+# Create the experiment with its files under data/mlflow (gitignored). A bare set_experiment() would store them in
+# ./mlruns in the repo folder - which our first version did (experiment "meridian-weekly-pipeline").
+EXP = "meridian-weekly"
+if mlflow.get_experiment_by_name(EXP) is None:
+    mlflow.create_experiment(EXP, artifact_location=Path(f"data/mlflow/artifacts/{EXP}").resolve().as_uri())
+mlflow.set_experiment(EXP)
 with mlflow.start_run(run_name=f"weekly {CUTOFF}{' DRILL' if DRILL else ''}"):
     mlflow.log_params({"cutoff": str(CUTOFF), "model": f"{MODEL} v{champ.version}", "customers": feat.height})
     mlflow.log_metrics({"psi_max": max(drift.values()), "psi_risk": drift["PREDICTED RISK"], "mean_risk": float(risk.mean()),
                         "checks_failed": len(failed), "checks_warned": len(warned), "features_drifted": len(warn)} | {f"aud_{a}": n for a, n in sizes.items()})
     mlflow.set_tag("output_md5", digest)
     mlflow.log_artifact(str(OUT / "report.json"))
-print("6. Logged to MLflow experiment 'meridian-weekly-pipeline'")
+print(f"6. Logged to MLflow experiment '{EXP}'")
