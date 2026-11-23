@@ -394,3 +394,13 @@
 - Context, not counted: a flat 50%-off clearance would LOSE EUR 9.8m/yr; ordering the 90th-pct "never run out" case would lose EUR 65m/yr; a perfect forecast is worth up to EUR 18.7m/yr (upper bound).
 - Sanity check: L41 perfect-forecast profit converted per year = 96% of Year-2 gross margin, so the units line up.
 - Lesson: the biggest money is in avoiding bad policies (blanket sales, over-ordering), not in clever models; the models' own gains are a few % of margin.
+
+## Lesson 52 - Anomaly detection on daily sales (channel x product group)
+- 734 days x 14 series (store/online x 6 main product groups + Other), log units.
+- Methods: (R) rolling z-score vs the previous 28 days; (S) seasonal residual = remove centred 29-day median + each series' weekday pattern, robust z (MAD); (I) Isolation Forest on each day's 14 residuals.
+- Planted test (25 fake anomalies: one series doubled or halved for one day), same alert volume for all: at 1% / 2% / 5% / 10% of data flagged, R finds 3 / 5 / 10 / 14, S finds 0 / 3 / 16 / 20, I finds 0 / 0 / 1 / 1 of 25.
+- Why so few at 1-2%: real events (holidays, Black Friday, lockdown) hit all 14 series at once and use up the alert budget. Isolation Forest scores whole days, so a single-series blip is diluted.
+- Real data, top 20 days per method: S and I agree on 15/20, R and S on 10/20. Rule-based cause found for R 12/20, S 16/20, I 17/20.
+- Hand check of S's 20 days: 18 explained. Christmas / New Year (stores shut, 98-100% online); Easter Sunday 2019, Whit Sunday 2019 and 2020 (store sales down); Black Friday 23 Nov 2018 and 28 Nov - 2 Dec 2019 (up to 5.6x units, prices 0.81-0.87x usual); Easter Saturday 2020 lockdown online sale (4.4x, 100% online); 6 Apr 2019 sale (2.7x, price 0.87x); 13 Jun 2019 swimwear launch (34.8% of units new items); 6 May 2020 stores reopen. Unexplained: 28 Sep 2019 (5.4x, online 85% vs 53% on usual Saturdays, normal prices) and 3 Nov 2019 (2.7x online).
+- Rolling z adds noise around the 2020 lockdown: 4 of its 20 flags (20 Mar, 2, 4 and 7 May 2020) are follow-on days after store sales collapsed to zero; the seasonal method ranks them outside its top 20 (max |z| 1.3-5.7). A lockdown is a regime change (level shift), not a one-day anomaly.
+- Lesson: most "anomalies" in retail are the calendar. Add a holiday/event calendar so alerts show only the truly unexpected, and treat lockdowns as level shifts (change-point detection).
