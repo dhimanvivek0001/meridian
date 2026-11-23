@@ -363,3 +363,13 @@
 - Text knows WHAT it is, photos know what COLOUR it is; combining wins on type and department.
 - Correction to L46: excluding same-product colour variants lowers the photo same-type score from 73.8% to 70.5%.
 - Memory/speed fix: nearest neighbours computed 1,000 rows at a time instead of full 10k x 10k matrices.
+
+## Lesson 49 - Cold start: which NEW items will a customer buy? (text + photo vs rules)
+- New items = 667 articles whose first ever sale is in the test week (16-22 Sep). No sales history, so popularity/ranker features are blind to them. Assumes the retailer knows its launch list.
+- Scored: 2,920 test buyers who bought a new item AND have 4-week history; they bought 1.46 new items each. Task: pick 12 of the 667 new items per customer.
+- Hit rate (bought one of the 12): random 2.84% | popular product types (same list for all) 2.23% (worse than random) | your own product types 5.14% | rules (another colour of a product you own > your types) 6.03%.
+- Text (MiniLM, closest new description to anything you bought) 8.12% = 2.9x random, best single method. Text + photo 8.49% (3.0x random).
+- Rules + text = text exactly (8.12%): colour variants share identical descriptions, so text already ranks "new colour of what you own" first (similarity 1.0).
+- PHOTO SUBSET: Kaggle 429s stopped the new-item download at 214 of 667 photos (32%, the lowest article IDs: older product lines, median 2 units vs 3). Owned photos only from the L46 top-seller subset (86.9% of customers have one).
+- All 667 items: photo 3.42% (it can only pick from the 214 photographed). Like-for-like on the 214 (451 customers): random 7.76% | your types 13.53% | photo 21.06% | text 23.06% | text + photo 23.73%.
+- Verdict: yes, content embeddings pick new items ~3x better than random and beat category rules; text > photo; combining adds a little. 929 of 4,249 new-item purchases were new colours of products someone owned.

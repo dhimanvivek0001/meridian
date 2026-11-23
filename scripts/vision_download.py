@@ -1,5 +1,6 @@
 # Lesson 46 (setup): download product images for the 3,000 top sellers before the cut - resumable, polite, skips missing
 import shutil
+import sys
 import time
 from pathlib import Path
 
@@ -10,16 +11,24 @@ COMP = "h-and-m-personalized-fashion-recommendations"
 OUT, TMP = Path("data/images"), Path("data/images/_tmp")
 PAUSE = 1.5  # seconds between requests; 0.6s triggered long runs of HTTP 429 (Too Many Requests)
 
-# Same choice as agreed: top 3,000 articles by units sold in the 4 weeks BEFORE the 16 Sep cut (no test-week peeking)
-pick = (
+# Optional: pass a parquet file with an article_id column to fetch a different list (Lesson 49: new test-week items)
+if len(sys.argv) > 1:
+    pick = pl.read_parquet(sys.argv[1]).select("article_id")
+    print(f"Custom list: {pick.height:,} articles from {sys.argv[1]}")
+else:
+    pick = None
+
+# Default (Lesson 46): top 3,000 articles by units sold in the 4 weeks BEFORE the 16 Sep cut (no test-week peeking)
+pick = pick if pick is not None else (
     pl.scan_parquet("data/clean/transactions.parquet")
     .filter(pl.col("sale_date").is_between(pl.date(2020, 8, 19), pl.date(2020, 9, 15)))
     .group_by("article_id").agg(pl.len().alias("n"))
     .sort(["n", "article_id"], descending=[True, False]).head(3000)
     .collect()
 )
-assert pick.height == 3000
-pick.write_parquet("data/clean/vision_articles.parquet")
+if len(sys.argv) == 1:
+    assert pick.height == 3000
+    pick.write_parquet("data/clean/vision_articles.parquet")
 
 api = KaggleApi()
 api.authenticate()
