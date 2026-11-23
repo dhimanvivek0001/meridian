@@ -383,3 +383,14 @@
 - Grounding (share of words found in description/colour/type): TF-IDF keywords 100% (by construction) | LLM tags 88.4% | LLM summaries 68.2%. Made-up details seen: "shoulder-pockets", "summer look", "velvet" for velour, typos "tulley", "ribbied", "long-slept".
 - Type guessed from text by MiniLM (rough usefulness test): full description 50.0% | TF-IDF top-5 20.0% | LLM tags 22.0% | LLM summary 57.0%. Colour mentioned 97%. CAVEAT: type and colour were given in the prompt, so the summary and colour scores partly reflect copying.
 - Verdict: a free 360M local model writes readable tags and copy, but invents ~1 in 9 tag words and ~1 in 3 summary words. Usable as drafts with human review or a grounding filter, not unsupervised. For pure search tags, plain TF-IDF keywords are as useful and never invent.
+
+## Lesson 51 - A simple P&L + money impact of earlier lessons (M11 starts)
+- Assumptions (stated in the script): 1 price unit = EUR 590 (median item ~EUR 15; prices are disguised, so EUR is illustrative), gross margin 50%, marketing EUR 47,962/day (L33 sim), save rate 20% (A/B confirmed), 1 churn campaign/yr, 2 clearances/yr.
+- 104 full weeks. Year 1 (from 24 Sep 2018) vs Year 2 (from 23 Sep 2019): items 16.72m -> 14.83m (-11.3%), revenue EUR 271.0m -> 246.6m (-9.0%), revenue per item EUR 16.21 -> 16.63 (+2.6%), contribution after marketing EUR 118.1m -> 105.9m (-10.3%).
+- Online share of revenue 74.2% -> 77.1%; marketing/revenue 6.4% -> 7.1% (plausible, a check on the EUR assumption).
+- Weakest week 16 Mar 2020 (first COVID lockdown) EUR 3.17m; strongest 25 Nov 2019 (Black Friday week) EUR 8.74m.
+- Correction to L17: it valued a saved customer at their REVENUE. On margin: 265,103 vouchers (not 558,456), gain 4,664 units/yr (not 17,173) = EUR 2.75m.
+- Annual gain vs what the business does today: churn vouchers EUR 2.75m | per-item clearance EUR 0.94m | newsvendor vs last year -0.33m (a tie) | MMM re-split EUR 0.36m (true; the model promised 9.40m). TOTAL EUR 3.73m = 3.0% of gross margin.
+- Context, not counted: a flat 50%-off clearance would LOSE EUR 9.8m/yr; ordering the 90th-pct "never run out" case would lose EUR 65m/yr; a perfect forecast is worth up to EUR 18.7m/yr (upper bound).
+- Sanity check: L41 perfect-forecast profit converted per year = 96% of Year-2 gross margin, so the units line up.
+- Lesson: the biggest money is in avoiding bad policies (blanket sales, over-ordering), not in clever models; the models' own gains are a few % of margin.
